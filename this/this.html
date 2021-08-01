@@ -1,0 +1,38 @@
+<div></div>
+<script>
+  "use strict";
+  var x = 300;
+
+  console.log(this); // window
+
+  function callThis() {
+    console.log(this); // window
+  }
+
+  callThis();
+
+  var obj = {
+    data: "kim",
+    fnObj: function () {
+      console.log(this);
+    },
+  };
+
+  obj.data;
+  obj.fnObj();
+
+  var obj2 = {
+    data: {
+      fnObj: function () {
+        //fnObj(){}로도 사용 가능
+        console.log(this);
+      },
+
+      fnArrow: () => {
+        console.log(this);
+      },
+    },
+  };
+  obj2.data.fnObj();
+  obj2.data.fnArrow();
+</script>
