@@ -1,38 +1,79 @@
-<div></div>
+<div>
+  <button id="btn">버튼</button>
+</div>
 <script>
-  "use strict";
-  var x = 300;
+  // "use strict";
+  // var x = 300;
 
-  console.log(this); // window
+  // console.log(this); // window
 
-  function callThis() {
-    console.log(this); // window
+  // function callThis() {
+  //   console.log(this); // window
+  // }
+
+  // callThis();
+
+  // var obj = {
+  //   data: "kim",
+  //   fnObj: function () {
+  //     console.log(this);
+  //   },
+  // };
+
+  // obj.data;
+  // obj.fnObj();
+
+  // var obj2 = {
+  //   data: {
+  //     fnObj: function () {
+  //       //fnObj(){}로도 사용 가능
+  //       console.log(this);
+  //     },
+
+  //     fnArrow: () => {
+  //       console.log(this);
+  //     },
+  //   },
+  // };
+  // obj2.data.fnObj();
+  // obj2.data.fnArrow();
+
+  function person() {
+    this.name = "lee"; //새로 생성되는 오브젝트(instance)
   }
+  var obj = new person();
 
-  callThis();
+  document.getElementById("btn").addEventListener("click", function (e) {
+    console.log(this); // e.currentTarget
+    console.log(e.currentTarget);
 
-  var obj = {
-    data: "kim",
-    fnObj: function () {
-      console.log(this);
-    },
-  };
-
-  obj.data;
-  obj.fnObj();
+    var arr = [1, 2, 3];
+    arr.forEach(function (a) {
+      //함수 안에 들어가는 함수를 콜백함수라 부른다
+      console.log(this); //{window}
+    });
+  });
 
   var obj2 = {
-    data: {
-      fnObj: function () {
-        //fnObj(){}로도 사용 가능
+    names: ["kim", "lee", "park"],
+    fnObj: function () {
+      console.log(this); // {obj2}
+      obj2.names.forEach(function () {
+        //근본없는 일반함수
         console.log(this);
-      },
-
-      fnArrow: () => {
+      });
+    },
+    fnObj2: function () {
+      console.log(this); // {obj2}
+      obj2.names.forEach(() => {
         console.log(this);
-      },
+      });
     },
   };
-  obj2.data.fnObj();
-  obj2.data.fnArrow();
+
+  //오브젝트 내에서 콜백함수를 쓴다면 this는?
+  obj2.fnObj(); // {window}
+  //arrow function안에서의 this는?
+  //내부의 this값을 변화시키지 않고 외부 this 그대로 재사용 가능
+  obj2.fnObj2(); // {obj2}
 </script>
