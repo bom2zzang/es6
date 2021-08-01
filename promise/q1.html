@@ -1,0 +1,20 @@
+<img id="test" src="https://codingapple1.github.io/kona.jpg" />
+
+<script>
+  var loadImg = new Promise(function (resolve, reject) {
+    document.getElementById("test").addEventListener("load", function () {
+      resolve();
+    });
+    document.getElementById("test").addEventListener("error", function () {
+      reject();
+    });
+  });
+
+  loadImg
+    .then(function () {
+      console.log("성공");
+    })
+    .catch(function () {
+      console.log("실패");
+    });
+</script>

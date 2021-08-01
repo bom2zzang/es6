@@ -1,0 +1,28 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  var loadTxt = new Promise(function (resolve, reject) {
+    $.ajax({
+      type: "GET",
+      url: "https://codingapple1.github.io/hello.txt ",
+    }).done(function (result) {
+      resolve(result);
+    });
+  });
+
+  loadTxt
+    .then((e) => {
+      console.log(e);
+      var loadTxt2 = new Promise(function (resolve, reject) {
+        $.ajax({
+          type: "GET",
+          url: "https://codingapple1.github.io/hello2.txt ",
+        }).done(function (result) {
+          resolve(result);
+        });
+      });
+      return loadTxt2;
+    })
+    .then((e) => {
+      console.log(e);
+    });
+</script>

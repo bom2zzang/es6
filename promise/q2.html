@@ -1,0 +1,14 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  var loadTxt = new Promise(function (resolve, reject) {
+    $.ajax({
+      type: "GET",
+      url: "https://codingapple1.github.io/hello.txt ",
+    }).done(function (result) {
+      resolve(result);
+    });
+  });
+  loadTxt.then(function (e) {
+    console.log(e);
+  });
+</script>
