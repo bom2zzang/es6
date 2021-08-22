@@ -1,0 +1,23 @@
+<script>
+  var weight = Symbol("비밀이야");
+  var height = Symbol("비밀키");
+  var person = { name: "Xiumin", [height]: 30 };
+  person.weight = 100; // 숨기고 싶다.
+  person[weight] = 500; // real > 반복문에서 출력이 되지 않는 이유는 enumerable 하지 않아서
+  person[height] = 900;
+
+  for (var key in person) {
+    console.log(person[key]);
+  }
+
+  var a = Symbol("설명");
+  var b = Symbol("설명");
+  // a === b : false
+
+  var c = Symbol.for("설명1");
+  var d = Symbol.for("설명1"); // === c
+  // c === d : true
+
+  var arr = [2, 3, 4];
+  arr[Symbol.iterator]; // array에 집어넣는 기본 Symbol
+</script>
