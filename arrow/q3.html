@@ -1,0 +1,11 @@
+<h1>setTimeout 이용해보기</h1>
+<button id="button">버튼</button>
+
+<script>
+  // setTimeout(콜백함수 ,  ms단위의 시간)
+  document.getElementById("button").addEventListener("click", function () {
+    setTimeout(() => {
+      console.log(this.innerHTML);
+    }, 1000);
+  });
+</script>

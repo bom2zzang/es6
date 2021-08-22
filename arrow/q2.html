@@ -1,0 +1,16 @@
+<h1>오브젝트 내의 데이터를 전부 더해주는 메소드 만들기</h1>
+
+<script>
+  var d = {
+    data: [1, 2, 3, 4, 5],
+  };
+
+  d.sumdata = function () {
+    var sumcount = 0;
+    d.data.forEach((v) => (sumcount += v));
+
+    console.log(sumcount);
+  };
+
+  d.sumdata();
+</script>
