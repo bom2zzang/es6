@@ -1,0 +1,27 @@
+<!-- 
+    전통적인 방식의 모듈화 개발
+    <script src="lib.js"></script>
+ -->
+
+<!-- es6 -->
+<script type="module">
+  //   import aaa from "./lib.js";
+  //   console.log(aaa);
+
+  import { b } from "./lib.js";
+  console.log(b);
+
+  import cc from "./lib.js";
+  console.log(cc);
+
+  import ccc, { a as aaa } from "./lib.js";
+  console.log(ccc);
+  console.log(aaa);
+
+  import defaultc, * as allall from "./lib.js";
+  console.log(allall); // Module라는 Object가 나온다.
+  console.log(allall.a);
+  console.log(defaultc);
+
+  // 옛날 방식 : var 변수 = require(경로);
+</script>
