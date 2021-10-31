@@ -1,0 +1,28 @@
+<script>
+  // object에서 사용하는 getter/setter
+  var person = {
+    name: "Hong",
+    age: 30,
+    nextAge() {
+      return this.age + 1;
+    },
+    setAge(newAge) {
+      this.age = perseInt(newAge); // 실수방지!
+    },
+
+    // ES5부터 지원 get/set키워드
+    get nextAge2() {
+      return this.age + 1;
+    },
+    set setAge2(newAge) {
+      this.age = perseInt(newAge);
+    },
+  };
+
+  person.age; // 30
+  person.nextAge(); // 31
+  person.setAge(20); // 20
+
+  person.nextAge2; // 복잡한 소괄호 사용 안해도 됨.
+  person.setAge2 = 20;
+</script>

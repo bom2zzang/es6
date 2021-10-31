@@ -1,0 +1,21 @@
+<script>
+  //class에서 사용하는 getter/setter
+  class Person {
+    constructor() {
+      this.name = "Anna";
+      this.age = 20;
+    }
+
+    get nextAge() {
+      return this.age + 1;
+    }
+    set setAge(newAge) {
+      this.age = newAge;
+    }
+  }
+
+  var p1 = new Person();
+  p1.nextAge; // 21
+  p1.setAge = 30;
+  p1.nextAge; // 31
+</script>
