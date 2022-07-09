@@ -1,0 +1,28 @@
+<body>
+  <custom-input name="비번"></custom-input>
+  <custom-input name="아이디"></custom-input>
+
+  <script>
+    class c extends HTMLElement {
+      connectedCallback() {
+        let name = this.getAttribute("name");
+        // 이 함수는 컴포넌트가 html에 장착될 때 실행됨
+        // let t = document.createElement("label");
+        // this.appendChild(t);
+        // 위 방식이 html태그 생성 속도가 더 빠름
+        this.innerHTML = `<label>${name}라벨</label><input>`;
+      }
+
+      static get observedAttributes() {
+        // attribute 변경 감지 가능
+        return ["name"];
+      }
+      attributeChangedCallback() {
+        // react, vue와 비슷한 재렌더링 기능
+        console.log(this.getAttribute("name"));
+      }
+    }
+
+    customElements.define("custom-input", c); // 컴포넌트 등록
+  </script>
+</body>
