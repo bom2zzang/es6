@@ -1,0 +1,17 @@
+<script>
+  var pants = 0;
+  var socks = 100;
+  `바지${pants} 양말${socks}`;
+  /**
+     이렇게 백틱기호를 이용하면 `바지20 양말100`이라는 멋진 문자가 완성됩니다.
+     하지만 pants라는 변수가 0인 경우 바지0 이렇게 출력되는게 싫어서
+     `바지다팔렸어요 양말100`이라고 문자를 아예 바꿔버리고 싶습니다.
+     Q. tagged literal 해체분석기를 이용해서 위 기능을 만들어보십시오.
+     (해체분석기`바지${pants} 양말${socks}`; 이렇게 코드를 실행하면 pants가 0인 경우 콘솔창에 `바지다팔렸어요 양말100`이라는 문장이 떠야합니다.)
+   */
+  function fn1(strs, var1, var2) {
+    var1 = var1 == 0 ? "다팔림" : var1;
+    console.log(strs[0] + var1 + " " + strs[1] + var2);
+  }
+  fn1`바지${pants} 양말${socks}`;
+</script>

@@ -1,0 +1,22 @@
+<div></div>
+
+<script>
+  var str = `로스트
+  아크`;
+  var str2 = `${str} 재밌다`;
+  var str3 = `<div>${str2}</div>`;
+  var str4 = `나는변수야!`;
+
+  // tagged literals
+  function fn1(a, b, c) {
+    // 문자를 해체 분석..!
+    // 1. 문자를 array화
+    // 2,3... 변수들
+    console.log(a); // 안녕하세요, 하시나요
+    console.log(b); // 로스트아크
+    console.log(c); // 나는변수야
+    console.log(a[1] + b + a[0] + c);
+  }
+
+  fn1`안녕하세요 ${str} 하시나요 ${str4}`;
+</script>
