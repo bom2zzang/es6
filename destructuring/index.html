@@ -1,0 +1,43 @@
+<script>
+  var arr = [2, 3, 4];
+
+  //  하나씩 꺼내서 변수에 담기
+  var [a, b, c] = [2, 3, 4];
+
+  // default값 주기
+  var [d, e, f = 5] = [2, 3];
+  var [g, h, i = 10] = []; //undefined
+
+  // object
+  //   var obj = { name: "실리안", age: 30 };
+  //   var name = obj.name;
+  //   var age = obj.age;
+
+  var { name, age } = { name: "니나브", age: 30 };
+  // 변수명을 key명과 똑같이 써야 한다.
+
+  // default
+  var { name1, age1 = 3 } = { name1: "아만" };
+  var { name4: name5 = "카제" } = {};
+
+  var { name2: name3 } = { name2: "아브렐슈드" }; // name3 = 아브렐슈드
+
+  // 변수들을 object에 집어넣고 싶은 경우
+  var a1 = "취나물";
+  var a2 = "바질";
+  var obj = { a1: a1, a2: a2 };
+  var obj2 = { a1, a2 }; // es6
+
+  // 함수 파라미터를 만들 때
+  function fn1({ a1, a2 }) {
+    console.log(a1);
+    console.log(a2);
+  }
+  fn1(obj2);
+
+  function fn2([a1, a2]) {
+    console.log(a1);
+    console.log(a2);
+  }
+  fn2([1, 2]);
+</script>

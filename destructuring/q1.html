@@ -1,0 +1,14 @@
+<script>
+  var [number, address] = [30, "seoul"];
+  console.log(number);
+  console.log(address);
+  var { address: a, number = 20 } = { address, number };
+  console.log(address);
+  console.log(a);
+  console.log(number);
+
+  // a와 address와 number라는 변수는 각각 무슨 값을 가지고 있을까요?
+  // a = seoul
+  // address = seoul
+  // number 30
+</script>
