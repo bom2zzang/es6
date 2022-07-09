@@ -1,0 +1,43 @@
+<div id="mordor"></div>
+<label> 내 스타일은 그대로 </label>
+<custom-input name="비번"></custom-input>
+
+<template id="template1">
+  <label>라벨</label><input />
+  <style>
+    label {
+      color: red;
+    }
+  </style>
+</template>
+<script>
+  /**
+   * 1. attachShadow()를 사용하여 shadowRoot라는 공간을 만들어 줌
+   * 2. shadowRootdp 원하는 HTML을 넣으면 숨겨짐
+   * 3. web component 문법과 함께해야 진가를 발휘함
+   */
+  document.querySelector("#mordor").attachShadow({ mode: "open" });
+  document.querySelector("#mordor").shadowRoot.innerHTML =
+    "<p>심연에서왔도다</p>";
+
+  /**
+   * web component에 스타일을 넣어주면
+   * 스타일 오염 문제가 있음
+   * -> 스타일을 shadow DOM 열어서 거기 집어넣으면 됨
+   * -> shadow DOM에 넣은 것들은 외부에 영향 x
+   */
+  class c extends HTMLElement {
+    connectedCallback() {
+      this.attachShadow({ mode: "open" });
+      //   this.shadowRoot.innerHTML = `<label>라벨</label><input>
+      //     <style>label {color:red}</style>`;
+      this.shadowRoot.append(template1.content.cloneNode(true));
+
+      let el = this.shadowRoot.querySelector("label");
+      el.addEventListener("click", function () {
+        console.log("클릭함");
+      });
+    }
+  }
+  customElements.define("custom-input", c); // 컴포넌트 등록
+</script>
